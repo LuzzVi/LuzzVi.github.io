@@ -356,6 +356,51 @@ section + section {
     transform: translateY(-2px);
 }
 
+/* ===== KONTAK LINK (MAPS, WA, EMAIL) ===== */
+.contact-link {
+    background: #F0F3F8;
+    padding: 6px 14px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    color: #4A5568;
+    font-size: 0.9rem;
+    transition: 0.2s;
+}
+
+.contact-link:hover {
+    background: #D98C2E;
+    color: white;
+}
+
+/* ===== TOMBOL SERTIFIKAT ===== */
+.achieve-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.cert-btn {
+    background: #F0F0F0;
+    color: #D98C2E;
+    padding: 4px 14px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: 0.2s;
+}
+
+.cert-btn:hover {
+    background: #D98C2E;
+    color: white;
+}
+
 @media (max-width: 600px) {
     .container {
         padding: 24px 16px;
@@ -383,5 +428,13 @@ section + section {
     .profil-img {
         width: 100px;
         height: 100px;
+    }
+        .achieve-list li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .cert-btn {
+        margin-left: 0;
+        margin-top: 5px;
     }
 }
