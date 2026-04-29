@@ -328,6 +328,34 @@ section + section {
     color: white;
 }
 
+/* ===== TOMBOL VIDEO ===== */
+.video-links {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.video-links h3 {
+    margin-bottom: 15px;
+    color: #D98C2E;
+}
+
+.video-btn {
+    display: inline-block;
+    background: #D98C2E;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.2s;
+    margin: 5px;
+}
+
+.video-btn:hover {
+    background: #b87a1f;
+    transform: translateY(-2px);
+}
+
 @media (max-width: 600px) {
     .container {
         padding: 24px 16px;
