@@ -9,6 +9,68 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Style khusus untuk Lightbox */
+        .gallery a {
+            cursor: pointer;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .close-btn:hover {
+            color: #D98C2E;
+            transform: scale(1.2);
+        }
+
+        .caption {
+            color: white;
+            margin-top: 20px;
+            font-size: 1rem;
+            text-align: center;
+            padding: 0 20px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -39,7 +101,6 @@
         <section class="job-location">
             <h2>Lokasi Kantor</h2>
             <p>Jl. H. Rean No.34, Benda Baru, Kec. Pamulang, Kota Tangerang Selatan, Banten 15415</p>
-            <!-- Ganti dengan embed code Google Maps yang asli -->
             <div class="map-container">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d802.3759977600472!2d106.71945310843951!3d-6.337509578901763!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e57c3d1a40b5%3A0x2fa1312c544a635a!2sKelurahan%20Benda%20Baru!5e0!3m2!1sid!2sid!4v1777366989725!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
@@ -53,15 +114,21 @@
         <section class="job-gallery">
             <h2>Dokumentasi Kerja</h2>
             <div class="gallery">
-                <!-- Jika ada foto, masukkan di sini dengan format seperti Baba Rafi -->
-                <!-- Contoh:
-                <a href="images/kelurahan-1.jpg" target="_blank">
-                    <img src="images/kelurahan-1.jpg" alt="Deskripsi">
+                <a onclick="openLightbox('images/intern-dokumentasi.jpeg', 'Dokumentasi saat bekerja di Kelurahan Benda Baru')">
+                    <img src="images/intern-dokumentasi.jpeg" alt="Dokumentasi saat bekerja di Kelurahan Benda Baru">
                 </a>
-                -->
-                <p style="color: #999; grid-column: 1 / -1; text-align: center;">Dokumentasi akan ditambahkan segera.</p>
+                <a onclick="openLightbox('images/intern-inputdokumen.jpeg', 'Proses input data kependudukan menggunakan komputer')">
+                    <img src="images/intern-inputdokumen.jpeg" alt="Proses input data kependudukan menggunakan komputer">
+                </a>
             </div>
         </section>
+
+        <!-- Lightbox Pop-up -->
+        <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+            <span class="close-btn">&times;</span>
+            <img src="" alt="" id="lightbox-img">
+            <p class="caption" id="lightbox-caption"></p>
+        </div>
 
         <footer>
             <p>© <span id="year"></span> Zulfikar Cahyadi.</p>
@@ -69,6 +136,19 @@
     </div>
 
     <script>
+        // Fungsi untuk membuka Lightbox
+        function openLightbox(imgSrc, caption) {
+            document.getElementById('lightbox').classList.add('active');
+            document.getElementById('lightbox-img').src = imgSrc;
+            document.getElementById('lightbox-caption').textContent = caption;
+        }
+
+        // Fungsi untuk menutup Lightbox
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        // Update tahun footer
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>

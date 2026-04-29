@@ -9,6 +9,68 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Style khusus untuk Lightbox */
+        .gallery a {
+            cursor: pointer;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .close-btn:hover {
+            color: #D98C2E;
+            transform: scale(1.2);
+        }
+
+        .caption {
+            color: white;
+            margin-top: 20px;
+            font-size: 1rem;
+            text-align: center;
+            padding: 0 20px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -29,7 +91,7 @@
             <h2>Tugas & Pengalaman</h2>
             <ul>
                 <li>Mengikuti pelatihan rutin baris-berbaris dan kedisiplinan.</li>
-                <li>Berpartisipasi sebagai pasukan pengibar bendera di upacara sekolah dan kecamatan.</li>
+                <li>Berpartisipasi sebagai pasukan pengibar bendera di upacara sekolah.</li>
                 <li>Beberapa kali mengikuti lomba baris-berbaris tingkat regional.</li>
                 <li>Menjadi pengiring pada acara wisuda sekolah.</li>
             </ul>
@@ -38,10 +100,21 @@
         <section class="job-gallery">
             <h2>Dokumentasi Kegiatan</h2>
             <div class="gallery">
-                <!-- TEMPAT FOTO -->
-                <p style="color: #999; grid-column: 1 / -1; text-align: center;">Dokumentasi akan ditambahkan segera.</p>
+                <a onclick="openLightbox('images/IMG_5264.JPG', 'Dokumentasi saat mengikuti acara MPLS sebagai anggota PASKIBRA')">
+                    <img src="images/IMG_5264.JPG" alt="Dokumentasi saat mengikuti acara MPLS sebagai anggota PASKIBRA">
+                </a>
+                <a onclick="openLightbox('images/WhatsAppImage2025-10-03at10.59.14.jpeg', 'Dokumentasi saat mengikuti lomba skynation')">
+                    <img src="images/WhatsAppImage2025-10-03at10.59.14.jpeg" alt="Dokumentasi saat mengikuti lomba skynation">
+                </a>
             </div>
         </section>
+
+        <!-- Lightbox Pop-up -->
+        <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+            <span class="close-btn">&times;</span>
+            <img src="" alt="" id="lightbox-img">
+            <p class="caption" id="lightbox-caption"></p>
+        </div>
 
         <footer>
             <p>© <span id="year"></span> Zulfikar Cahyadi.</p>
@@ -49,6 +122,19 @@
     </div>
 
     <script>
+        // Fungsi untuk membuka Lightbox
+        function openLightbox(imgSrc, caption) {
+            document.getElementById('lightbox').classList.add('active');
+            document.getElementById('lightbox-img').src = imgSrc;
+            document.getElementById('lightbox-caption').textContent = caption;
+        }
+
+        // Fungsi untuk menutup Lightbox
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        // Update tahun footer
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>

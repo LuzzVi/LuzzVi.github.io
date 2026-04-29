@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sertifikat – Zulfikar Cahyadi</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Style khusus untuk Lightbox dan Card Sertifikat */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .cert-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+        }
+
+        .cert-card img {
+            width: 100%;
+            display: block;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+        }
+
+        /* Style untuk Lightbox (Pop-up) */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .close-btn:hover {
+            color: #D98C2E;
+            transform: scale(1.2);
+        }
+
+        .caption {
+            color: white;
+            margin-top: 20px;
+            font-size: 1rem;
+            text-align: center;
+            padding: 0 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">← Kembali ke Portofolio</a>
+        
+        <h1>Sertifikat</h1>
+            
+        <div class="cert-grid">
+            <!-- Kartu Sertifikat -->
+            <div class="cert-card" onclick="openLightbox('images/sertifikat-ujikom.jpg', 'Sertifikat Uji Kompetensi Keahlian')">
+                <img src="images/sertifikat-ujikom.jpg" alt="Sertifikat Uji Kompetensi Keahlian">
+            </div>
+            <div class="cert-card" onclick="openLightbox('images/sertifikat-ujikom2.jpg', 'Sertifikat Uji Kompetensi Keahlian (Halaman 2)')">
+                <img src="images/sertifikat-ujikom2.jpg" alt="Sertifikat Uji Kompetensi Keahlian (Halaman 2)">
+            </div>
+            <div class="cert-card" onclick="openLightbox('images/sertifikat-prakerin.jpg', 'Sertifikat Prakerin')">
+                <img src="images/sertifikat-prakerin.jpg" alt="Sertifikat Prakerin">
+            </div>
+            <div class="cert-card" onclick="openLightbox('images/sertifikat-prakerin2.jpg', 'Sertifikat Prakerin 2')">
+                <img src="images/sertifikat-prakerin2.jpg" alt="Sertifikat Prakerin 2">
+            </div>
+            <div class="cert-card" onclick="openLightbox('images/sertifikat-opl.jpg', 'Sertifikat OPL')">
+                <img src="images/sertifikat-opl.jpg" alt="Sertifikat OPL">
+            </div>
+            <div class="cert-card" onclick="openLightbox('images/sertifikat-osis.jpg', 'Sertifikat OSIS')">
+                <img src="images/sertifikat-osis.jpg" alt="Sertifikat OSIS">
+            </div>
+            <div class="cert-card" onclick="openLightbox('images/sertifikat-panitia.jpg', 'Sertifikat Panitia')">
+                <img src="images/sertifikat-panitia.jpg" alt="Sertifikat Panitia">
+            </div>
+            <div class="cert-card" onclick="openLightbox('images/sertifikat-rohis.jpg', 'Sertifikat Rohis')">
+                <img src="images/sertifikat-rohis.jpg" alt="Sertifikat Rohis">
+            </div>
+            <div class="cert-card" onclick="openLightbox('images/sertifikat-paskibra.jpg', 'Sertifikat PASKIBRA')">
+                <img src="images/sertifikat-paskibra.jpg" alt="Sertifikat PASKIBRA">
+            </div>
+            <div class="cert-card" onclick="openLightbox('images/sertifikat-skynation.jpg', 'Sertifikat Mula 3')">
+                <img src="images/sertifikat-skynation.jpg" alt="Sertifikat Mula 3">
+            </div>
+            <div class="cert-card" onclick="openLightbox('images/sertifikat-ciara.jpg', 'Sertifikat Ciara')">
+                <img src="images/sertifikat-ciara.jpg" alt="Sertifikat Ciara">
+            </div>
+            <div class="cert-card" onclick="openLightbox('images/Harapan-1.png', 'Sertifikat Harapan 1 Ciara')">
+                <img src="images/Harapan-1.png" alt="Sertifikat Harapan 1 Ciara">
+            </div>
+        </div>
+
+        <!-- Lightbox Pop-up -->
+        <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+            <span class="close-btn">&times;</span>
+            <img src="" alt="" id="lightbox-img">
+            <p class="caption" id="lightbox-caption"></p>
+        </div>
+
+        <footer>
+            <p>© <span id="year"></span> Zulfikar Cahyadi.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Fungsi untuk membuka Lightbox
+        function openLightbox(imgSrc, caption) {
+            document.getElementById('lightbox').classList.add('active');
+            document.getElementById('lightbox-img').src = imgSrc;
+            document.getElementById('lightbox-caption').textContent = caption;
+        }
+
+        // Fungsi untuk menutup Lightbox
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        // Update tahun footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

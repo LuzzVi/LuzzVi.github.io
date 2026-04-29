@@ -9,6 +9,68 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Style khusus untuk Lightbox */
+        .gallery a {
+            cursor: pointer;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .close-btn:hover {
+            color: #D98C2E;
+            transform: scale(1.2);
+        }
+
+        .caption {
+            color: white;
+            margin-top: 20px;
+            font-size: 1rem;
+            text-align: center;
+            padding: 0 20px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -38,7 +100,6 @@
         <section class="job-location">
             <h2>Lokasi Office Cabang Tangsel</h2>
             <p>Jl. Vila Dago Tol, Serua, Kec. Ciputat, Kota Tangerang Selatan, Banten 15414</p>
-            <!-- Ganti dengan embed code dari Google Maps sesuai outletmu -->
             <div class="map-container">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d495.7077864501391!2d106.70398!3d-6.308022!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e5000edd0101%3A0x4ac896b4d38f4c92!2sDepo%20Baba%20Rafi%20Tangsel!5e0!3m2!1sid!2sid!4v1777367308879!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
@@ -52,73 +113,77 @@
         <section class="job-gallery">
             <h2>Dokumentasi Kerja</h2>
             <div class="gallery">
-                <a href="images/babarafi-absen.png" target="_blank">
+                <a onclick="openLightbox('images/babarafi-absen.png', 'Absensi digital menggunakan aplikasi')">
                     <img src="images/babarafi-absen.png" alt="Absensi digital menggunakan aplikasi">
                 </a>
-                <a href="images/babarafi-opening.jpg" target="_blank">
+                <a onclick="openLightbox('images/babarafi-opening.jpg', 'Opening Outlet')">
                     <img src="images/babarafi-opening.jpg" alt="Opening Outlet">
                 </a>
-                <a href="images/babarafi-alatmasak.jpg" target="_blank">
+                <a onclick="openLightbox('images/babarafi-alatmasak.jpg', 'Membersihkan alat masak sebelum memulai shift')">
                     <img src="images/babarafi-alatmasak.jpg" alt="Membersihkan alat masak sebelum memulai shift">
                 </a>
-                <a href="images/babarafi-komporwajan.jpg" target="_blank">
+                <a onclick="openLightbox('images/babarafi-komporwajan.jpg', 'Membersihkan kompor dan wajan sebelum memulai shift')">
                     <img src="images/babarafi-komporwajan.jpg" alt="Membersihkan kompor dan wajan sebelum memulai shift">
                 </a>
-                <a href="images/babarafi-lantaioutlet.jpg" target="_blank">
+                <a onclick="openLightbox('images/babarafi-lantaioutlet.jpg', 'Membersihkan lantai outlet sebelum memulai shift')">
                     <img src="images/babarafi-lantaioutlet.jpg" alt="Membersihkan lantai outlet sebelum memulai shift">
                 </a>
-                <a href="images/babarafi-generalcleaning.jpg" target="_blank">
+                <a onclick="openLightbox('images/babarafi-generalcleaning.jpg', 'Melakukan general cleaning outlet setiap jumat')">
                     <img src="images/babarafi-generalcleaning.jpg" alt="Melakukan general cleaning outlet setiap jumat">
                 </a>
-                <a href="images/babarafi-bagiansamping.jpg" target="_blank">
+                <a onclick="openLightbox('images/babarafi-bagiansamping.jpg', 'Outlet Bagian Depan dan Samping')">
                     <img src="images/babarafi-bagiansamping.jpg" alt="Outlet Bagian Depan dan Samping">
                 </a>
-                <a href="images/babarafi-suasanagudang.jpg" target="_blank">
+                <a onclick="openLightbox('images/babarafi-suasanagudang.jpg', 'Suasana Gudang')">
                     <img src="images/babarafi-suasanagudang.jpg" alt="Suasana Gudang">
                 </a>
-                <a href="images/babarafi-pengambilanbbo.jpg" target="_blank">
+                <a onclick="openLightbox('images/babarafi-pengambilanbbo.jpg', 'Pengambilan Bahan Baku')">
                     <img src="images/babarafi-pengambilanbbo.jpg" alt="Pengambilan Bahan Baku">
                 </a>
-                <a href="images/babarafi-melayanipelanggan.jpg" target="_blank">
+                <a onclick="openLightbox('images/babarafi-melayanipelanggan.jpg', 'Melayani Pelanggan')">
                     <img src="images/babarafi-melayanipelanggan.jpg" alt="Melayani Pelanggan">
                 </a>
-                <a href="images/babarafi-menggulungkebab.jpg" target="_blank">
+                <a onclick="openLightbox('images/babarafi-menggulungkebab.jpg', 'Menggulung Kebab')">
                     <img src="images/babarafi-menggulungkebab.jpg" alt="Menggulung Kebab">
                 </a>
-                <a href="images/babarafi-gobizmerchant.jpg" target="_blank">
+                <a onclick="openLightbox('images/babarafi-gobizmerchant.jpg', 'Aplikasi GoBiz Merchant')">
                     <img src="images/babarafi-gobizmerchant.jpg" alt="Aplikasi GoBiz Merchant">
                 </a>
-                <a href="images/babarafi-shopeemerchant.jpg" target="_blank">
+                <a onclick="openLightbox('images/babarafi-shopeemerchant.jpg', 'Aplikasi Shopee Merchant')">
                     <img src="images/babarafi-shopeemerchant.jpg" alt="Aplikasi Shopee Merchant">
                 </a>
-                <a href="images/babarafi-inputpenjualan.jpg" target="_blank">
+                <a onclick="openLightbox('images/babarafi-inputpenjualan.jpg', 'Input Penjualan Harian di POS')">
                     <img src="images/babarafi-inputpenjualan.jpg" alt="Input Penjualan Harian di POS">
                 </a>
-                <a href="images/babarafi-influencer.jpg" target="_blank">
+                <a onclick="openLightbox('images/babarafi-influencer.jpg', 'Melayani Influencer yang Berkunjung ke Outlet')">
                     <img src="images/babarafi-influencer.jpg" alt="Melayani Influencer yang Berkunjung ke Outlet">
                 </a>
-                <a href="images/babarafi-anaktraining.jpg" target="_blank">
+                <a onclick="openLightbox('images/babarafi-anaktraining.jpg', 'Mengajarkan Anak Training Cara Melayani Pelanggan dan Menggulung Kebab')">
                     <img src="images/babarafi-anaktraining.jpg" alt="Mengajarkan Anak Training Cara Melayani Pelanggan dan Menggulung Kebab">
                 </a>
-                <a href="images/babarafi-hasilgulungananaktraining.jpg" target="_blank">
+                <a onclick="openLightbox('images/babarafi-hasilgulungananaktraining.jpg', 'Hasil Gulungan Kebab dari Anak Training')">
                     <img src="images/babarafi-hasilgulungananaktraining.jpg" alt="Hasil Gulungan Kebab dari Anak Training">
                 </a>
-                <a href="images/babarafi-closingan.jpg" target="_blank">
+                <a onclick="openLightbox('images/babarafi-closingan.jpg', 'Closing Shift')">
                     <img src="images/babarafi-closingan.jpg" alt="Closing Shift">
                 </a>
             </div>
+
             <div class="video-links">
-    <h3>Dokumentasi Video</h3>
-   <div class="video-links">
-    <a href="https://www.tiktok.com/@oesman7_/video/7535474610201218312?is_from_webapp=1&sender_device=pc&web_id=7633054182195529234" target="_blank" class="video-btn">🎬 Tonton Video di TikTok (1)</a>
-    
-    <a href="https://www.tiktok.com/@bayudannada/video/7537426084913024261?is_from_webapp=1&sender_device=pc&web_id=7633054182195529234" target="_blank" class="video-btn">🎬 Tonton Video di TikTok (2)</a>
-    
-    <a href="https://www.tiktok.com/@babeh_bambang_ompong/video/7534373460437404984?is_from_webapp=1&sender_device=pc&web_id=7633054182195529234" target="_blank" class="video-btn">🎬 Tonton Video di TikTok (3)</a>
-    
-    <a href="https://www.tiktok.com/@babeh_bambang_ompong/video/7532057423096401158?is_from_webapp=1&sender_device=pc&web_id=7633054182195529234" target="_blank" class="video-btn">🎬 Tonton Video di TikTok (4)</a>
-</div>
+                <h3>Dokumentasi Video</h3>
+                <a href="https://www.tiktok.com/@oesman7_/video/7535474610201218312" target="_blank" class="video-btn">🎬 Tonton Video di TikTok (1)</a>
+                <a href="https://www.tiktok.com/@bayudannada/video/7537426084913024261" target="_blank" class="video-btn">🎬 Tonton Video di TikTok (2)</a>
+                <a href="https://www.tiktok.com/@babeh_bambang_ompong/video/7534373460437404984" target="_blank" class="video-btn">🎬 Tonton Video di TikTok (3)</a>
+                <a href="https://www.tiktok.com/@babeh_bambang_ompong/video/7532057423096401158" target="_blank" class="video-btn">🎬 Tonton Video di TikTok (4)</a>
+            </div>
         </section>
+
+        <!-- Lightbox Pop-up -->
+        <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+            <span class="close-btn">&times;</span>
+            <img src="" alt="" id="lightbox-img">
+            <p class="caption" id="lightbox-caption"></p>
+        </div>
 
         <footer>
             <p>© <span id="year"></span> Zulfikar Cahyadi.</p>
@@ -126,7 +191,19 @@
     </div>
 
     <script>
-        // Isi tahun otomatis
+        // Fungsi untuk membuka Lightbox
+        function openLightbox(imgSrc, caption) {
+            document.getElementById('lightbox').classList.add('active');
+            document.getElementById('lightbox-img').src = imgSrc;
+            document.getElementById('lightbox-caption').textContent = caption;
+        }
+
+        // Fungsi untuk menutup Lightbox
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        // Update tahun footer
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
